@@ -1,6 +1,6 @@
 MODEL:
   PRETRAIN_CHOICE: 'imagenet'
-  PRETRAIN_PATH: '/home/heshuting/.cache/torch/checkpoints/jx_vit_base_p16_224-80ecf9dd.pth'
+  PRETRAIN_PATH: '../jx_vit_base_p16_224-80ecf9dd.pth'
   METRIC_LOSS_TYPE: 'triplet'
   IF_LABELSMOOTH: 'off'
   IF_WITH_CENTER: 'no'
@@ -27,7 +27,7 @@ INPUT:
 
 DATASETS:
   NAMES: ('veri')
-  ROOT_DIR: ('../../data')
+  ROOT_DIR: ('data')
 
 DATALOADER:
   SAMPLER: 'softmax_triplet'
@@ -36,26 +36,26 @@ DATALOADER:
 
 SOLVER:
   OPTIMIZER_NAME: 'SGD'
-  MAX_EPOCHS: 120
+  MAX_EPOCHS: 1
   BASE_LR: 0.01
-  IMS_PER_BATCH: 64
+  IMS_PER_BATCH: 8
   WARMUP_METHOD: 'linear'
   LARGE_FC_LR: False
-  CHECKPOINT_PERIOD: 120
+  CHECKPOINT_PERIOD: 1
   LOG_PERIOD: 50
-  EVAL_PERIOD: 120
+  EVAL_PERIOD: 1
   WEIGHT_DECAY:  1e-4
   WEIGHT_DECAY_BIAS: 1e-4
   BIAS_LR_FACTOR: 2
 
 TEST:
   EVAL: True
-  IMS_PER_BATCH: 256
+  IMS_PER_BATCH: 1
   RE_RANKING: False
   WEIGHT: ''
   NECK_FEAT: 'before'
   FEAT_NORM: 'yes'
 
-OUTPUT_DIR: '../logs/veri_vit_transreid_stride'
+OUTPUT_DIR: 'logs/veri_vit_transreid_stride'
 
 
